@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【转】 在 Linux 上如何清除内存的 Cache、Buffer 和交换空间 | Flymin's Blog</title><meta name="keywords" content="Linux"><meta name="author" content="Flymin Gao"><meta name="copyright" content="Flymin Gao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="转载自Linux中国，原文：在 Linux 上如何清除内存的 Cache、Buffer 和交换空间  像任何其他的操作系统一样，GNU&#x2F;Linux 已经实现的内存管理不仅有效，而且更好。但是，如果有任何进程正在蚕食你的内存，而你想要清除它的话，Linux 提供了一个刷新或清除RAM缓存方法。 Clear RAM Cache and Swap in Linux 如何在 Linux 中清除缓存（Cac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【转】 在 Linux 上如何清除内存的 Cache、Buffer 和交换空间">
+<meta property="og:url" content="https://gaoruiyuan.com/blog/2019/06/05/%E5%9C%A8%20Linux%20%E4%B8%8A%E5%A6%82%E4%BD%95%E6%B8%85%E9%99%A4%E5%86%85%E5%AD%98%E7%9A%84%20Cache%E3%80%81Buffer%20%E5%92%8C%E4%BA%A4%E6%8D%A2%E7%A9%BA%E9%97%B4/index.html">
+<meta property="og:site_name" content="Flymin&#39;s Blog">
+<meta property="og:description" content="转载自Linux中国，原文：在 Linux 上如何清除内存的 Cache、Buffer 和交换空间  像任何其他的操作系统一样，GNU&#x2F;Linux 已经实现的内存管理不仅有效，而且更好。但是，如果有任何进程正在蚕食你的内存，而你想要清除它的话，Linux 提供了一个刷新或清除RAM缓存方法。 Clear RAM Cache and Swap in Linux 如何在 Linux 中清除缓存（Cac">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.linux.net.cn/data/attachment/album/201506/14/223628fnaf2ja11f0azaf0.jpg">
+<meta property="article:published_time" content="2019-06-05T06:06:53.000Z">
+<meta property="article:modified_time" content="2023-08-22T08:55:59.681Z">
+<meta property="article:author" content="Flymin Gao">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.linux.net.cn/data/attachment/album/201506/14/223628fnaf2ja11f0azaf0.jpg"><link rel="shortcut icon" href="https://upload-pic-1257159689.picbj.myqcloud.com/img/20200109173927.png"><link rel="canonical" href="https://gaoruiyuan.com/blog/2019/06/05/%E5%9C%A8%20Linux%20%E4%B8%8A%E5%A6%82%E4%BD%95%E6%B8%85%E9%99%A4%E5%86%85%E5%AD%98%E7%9A%84%20Cache%E3%80%81Buffer%20%E5%92%8C%E4%BA%A4%E6%8D%A2%E7%A9%BA%E9%97%B4/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/blog/css/index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/blog/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【转】 在 Linux 上如何清除内存的 Cache、Buffer 和交换空间',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-08-22 16:55:59'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://upload-pic-1257159689.picbj.myqcloud.com/img/20200109173908.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/blog/archives/"><div class="headline">文章</div><div class="length-num">18</div></a></div><div class="data-item"><a href="/blog/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div><div class="data-item"><a href="/blog/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/blog/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/blog/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/blog/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/blog/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="https://gaoruiyuan.com/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/blog/link/"><i class="fa-fw fa fa-link"></i><span> 友链&amp;留言</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://img.linux.net.cn/data/attachment/album/201506/14/223628fnaf2ja11f0azaf0.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/blog/">Flymin's Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/blog/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/blog/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/blog/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/blog/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="https://gaoruiyuan.com/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/blog/link/"><i class="fa-fw fa fa-link"></i><span> 友链&amp;留言</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【转】 在 Linux 上如何清除内存的 Cache、Buffer 和交换空间</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-06-05T06:06:53.000Z" title="发表于 2019-06-05 14:06:53">2019-06-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-08-22T08:55:59.681Z" title="更新于 2023-08-22 16:55:59">2023-08-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/blog/categories/%E5%AE%9E%E7%94%A8%E4%BF%A1%E6%81%AF/">实用信息</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/blog/categories/Linux/">Linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【转】 在 Linux 上如何清除内存的 Cache、Buffer 和交换空间"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>转载自<a target="_blank" rel="noopener" href="https://linux.cn/article-5627-1.html">Linux中国</a>，原文：<a target="_blank" rel="noopener" href="https://linux.cn/article-5627-1.html">在 Linux 上如何清除内存的 Cache、Buffer 和交换空间</a></p>
+<div id="article_content" style="border-radius:0;">
+<p>像任何其他的操作系统一样，GNU/Linux 已经实现的内存管理不仅有效，而且更好。但是，如果有任何进程正在蚕食你的内存，而你想要清除它的话，Linux 提供了一个刷新或清除RAM缓存方法。</p>
+<p class="article_img"><img src="https://img.linux.net.cn/data/attachment/album/201506/14/223628fnaf2ja11f0azaf0.jpg" alt="Clear RAM Cache and Swap in Linux"></p><p class="article_img_desc"><em>Clear RAM Cache and Swap in Linux</em></p>
+<h3 id="toc_1">如何在 Linux 中清除缓存（Cache）？</h3>
+<p>每个 Linux 系统有三种选项来清除缓存而不需要中断任何进程或服务。</p>
+<p>（LCTT 译注：Cache，译作“缓存”，指 CPU 和内存之间高速缓存。Buffer，译作“缓冲区”，指在写入磁盘前的存储再内存中的内容。在本文中，Buffer 和 Cache 有时候会通指。）</p>
+<ol>
+<li>仅清除页面缓存（PageCache) <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sync; <span class="built_in">echo</span> 1 &gt; /proc/sys/vm/drop_caches</span><br></pre></td></tr></table></figure>
+</li>
+<li>清除目录项和inode <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sync; <span class="built_in">echo</span> 2 &gt; /proc/sys/vm/drop_caches</span><br></pre></td></tr></table></figure>
+</li>
+<li>清除页面缓存，目录项和inode <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sync; <span class="built_in">echo</span> 3 &gt; /proc/sys/vm/drop_caches</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>sync 将刷新文件系统缓冲区（buffer），命令通过“;”分隔，顺序执行，shell在执行序列中的下一个命令之前会等待命令的终止。正如内核文档中提到的，写入到drop_cache将清空缓存而不会杀死任何应用程序/服务，<a target="_blank" rel="noopener" href="https://linux.cn/article-3592-1.html">echo命令</a>做写入文件的工作。</p>
+<p>如果你必须清除磁盘高速缓存，第一个命令在企业和生产环境中是最安全，<code>"...echo 1&gt; ..."</code>只会清除页面缓存。 在生产环境中不建议使用上面的第三个选项<code>"...echo 3 &gt; ..."</code> ，除非你明确自己在做什么，因为它会清除缓存页，目录项和inodes。</p>
+<p><strong>在Linux上释放也许被内核所使用的缓冲区（Buffer）和缓存（Cache）是否是个好主意？</strong></p>
+<p>当你设置许多设定想要检查效果时，如果它实际上是专门针对 I/O 范围的基准测试，那么你可能需要清除缓冲区和缓存。你可以如上所示删除缓存，无需重新启动系统（即无需停机）。</p>
+<p>Linux被设计成它在寻找磁盘之前到磁盘缓存寻找的方式。如果它发现该资源在缓存中，则该请求不会发送到磁盘。如果我们清理缓存，磁盘缓存就起不到作用了，系统会到磁盘上寻找资源。</p>
+<p>此外，当清除缓存后它也将减慢系统运行速度，系统会将每一个被请求的资源再次加载到磁盘缓存中。</p>
+<p>现在，我们将创建一个 shell 脚本，通过一个 cron 调度任务在每天下午2点自动清除RAM缓存。如下创建一个 shell 脚本 clearcache.sh 并在其中添加以下行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># 注意，我们这里使用了 &quot;echo 3&quot;，但是不推荐使用在产品环境中，应该使用 &quot;echo 1&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;echo 3 &gt; /proc/sys/vm/drop_caches&quot;</span></span><br></pre></td></tr></table></figure>
+<p>给clearcache.sh文件设置执行权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 755 clearcache.sh</span><br></pre></td></tr></table></figure>
+<p>现在，当你需要清除内存缓存时只需要调用脚本。</p>
+<p>现在设置一个每天下午2点的定时任务来清除RAM缓存，打开crontab进行编辑。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br></pre></td></tr></table></figure>
+<p>添加以下行，保存并退出。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 3 * * * /path/to/clearcache.sh</span><br></pre></td></tr></table></figure>
+<p>有关如何创建一个定时任务，更多细节你可以查看我们的文章 <a href="http://www.tecmint.com/11-cron-scheduling-task-examples-in-linux/" class="ext" rel="external nofollow" target="_blank">11 个定时调度任务的例子</a>。</p>
+<p><strong>在生产环境的服务器上自动清除RAM是否是一个好主意？</strong></p>
+<p>不！它不是。想想一个情况，当你已经预定脚本在每天下午2点来清除内存缓存。那么其时该脚本会执行并刷新你的内存缓存。在某一天由于某些原因，可能您的网站的在线用户会超过预期地从你的服务器请求资源。</p>
+<p>而在这时，按计划调度的脚本运行了，并清除了缓存中的一切。当所有的用户都从磁盘读取数据时，这将导致服务器崩溃并损坏数据库。因此，清除缓存仅在必要时并且在你的预料之中，否则你就是个呆瓜系统管理员。</p>
+<h3 id="toc_2">如何清除Linux的交换空间？</h3>
+<p>如果你想清除掉的空间，你可以运行下面的命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapoff -a &amp;&amp; swapon -a</span><br></pre></td></tr></table></figure>
+<p>此外，了解有关风险后，您可以将上面的命令添加到cron中。</p>
+<p>现在，我们将上面两种命令结合成一个命令，写成正确的脚本来同时清除RAM缓存和交换空间。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> 3 &gt; /proc/sys/vm/drop_caches &amp;&amp; swapoff -a &amp;&amp; swapon -a &amp;&amp; <span class="built_in">printf</span> <span class="string">&#x27;\n%s\n&#x27;</span> <span class="string">&#x27;Ram-cache and Swap Cleared&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su -c <span class="string">&#x27;echo 3 &gt; /proc/sys/vm/drop_caches&#x27;</span> &amp;&amp; swapoff -a &amp;&amp; swapon -a &amp;&amp; <span class="built_in">printf</span> <span class="string">&#x27;\n%s\n&#x27;</span> <span class="string">&#x27;Ram-cache and Swap Cleared&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>在测试上面的命令之前，我们在执行脚本前后运行“free -m” 来检查缓存。</p>
+<p class="article_img"><img src="https://img.linux.net.cn/data/attachment/album/201506/14/223630gbmhh70umvj00fl8.gif" alt="Clear RAM Cache and Swap Space"></p><p class="article_img_desc"><em>Clear RAM Cache and Swap Space</em></p>
+<p>就是这样，如果你喜欢这篇文章，不要忘记向我们提供您宝贵的意见，让我们知道，您认为在企业和生产环境中清除内存缓存和缓冲区是否是一个好主意？</p>
+<hr>
+<p>via: <a href="http://www.tecmint.com/clear-ram-memory-cache-buffer-and-swap-space-on-linux/" class="ext" rel="external nofollow" target="_blank">http://www.tecmint.com/clear-ram-memory-cache-buffer-and-swap-space-on-linux/</a></p>
+<p>作者：<a href="http://www.tecmint.com/author/avishek/" class="ext" rel="external nofollow" target="_blank">Avishek Kumar</a>&nbsp;译者：<a href="https://github.com/strugglingyouth" class="ext" rel="external nofollow" target="_blank">strugglingyouth</a>&nbsp;校对：<a href="https://github.com/wxy" class="ext" rel="external nofollow" target="_blank">wxy</a></p>
+<p>本文由 <a href="https://github.com/LCTT/TranslateProject" class="ext" rel="external nofollow" target="_blank">LCTT</a> 原创翻译，<a target="_blank" rel="noopener" href="https://linux.cn/article-5627-1.html">Linux中国</a> 荣誉推出</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Flymin Gao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://gaoruiyuan.com/blog/2019/06/05/%E5%9C%A8%20Linux%20%E4%B8%8A%E5%A6%82%E4%BD%95%E6%B8%85%E9%99%A4%E5%86%85%E5%AD%98%E7%9A%84%20Cache%E3%80%81Buffer%20%E5%92%8C%E4%BA%A4%E6%8D%A2%E7%A9%BA%E9%97%B4/">https://gaoruiyuan.com/blog/2019/06/05/%E5%9C%A8%20Linux%20%E4%B8%8A%E5%A6%82%E4%BD%95%E6%B8%85%E9%99%A4%E5%86%85%E5%AD%98%E7%9A%84%20Cache%E3%80%81Buffer%20%E5%92%8C%E4%BA%A4%E6%8D%A2%E7%A9%BA%E9%97%B4/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://gaoruiyuan.com/blog" target="_blank">Flymin's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/blog/tags/Linux/">Linux</a></div><div class="post_share"><div class="social-share" data-image="https://img.linux.net.cn/data/attachment/album/201506/14/223628fnaf2ja11f0azaf0.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/blog/2019/06/09/TensorFlow%E4%B8%AD%E7%9A%84%E6%A8%A1%E5%9E%8B%E4%BF%9D%E5%AD%98%E6%96%87%E4%BB%B6/"><img class="prev-cover" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/TensorFlowLogo.svg/1024px-TensorFlowLogo.svg.png" onerror="onerror=null;src='/blog/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">TensorFlow中的模型保存文件</div></div></a></div><div class="next-post pull-right"><a href="/blog/2019/06/05/CentOS%E7%94%9F%E6%88%90CelebA-HQ%E6%95%B0%E6%8D%AE%E9%9B%86/"><img class="next-cover" src="http://mmlab.ie.cuhk.edu.hk/projects/CelebA/intro.png" onerror="onerror=null;src='/blog/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">CentOS生成CelebA-HQ数据集</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/blog/2020/01/13/nvidia-smi-%E6%8C%87%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/" title="nvidia-smi 指令的使用"><img class="cover" src="https://upload-pic-1257159689.image.myqcloud.com/uPic/9HELnS_20200113211926.png!FlyminCOS?imageMogr2/thumbnail/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-01-13</div><div class="title">nvidia-smi 指令的使用</div></div></a></div><div><a href="/blog/2020/01/08/%E5%A4%8D%E5%88%B6%E5%91%BD%E4%BB%A4cp%E4%B8%8Escp/" title="复制命令cp与scp"><img class="cover" src="https://upload-pic-1257159689.picbj.myqcloud.com/img/20200109174802.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-01-08</div><div class="title">复制命令cp与scp</div></div></a></div><div><a href="/blog/2020/06/17/%E5%AE%B6%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE%E4%B8%8E%E5%A4%87%E5%BF%98/" title="【记录】家用服务器基本设置与备忘"><img class="cover" src="https://upload-pic-1257159689.image.myqcloud.com/img/20200617104041.JPG" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-06-17</div><div class="title">【记录】家用服务器基本设置与备忘</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://upload-pic-1257159689.picbj.myqcloud.com/img/20200109173908.jpg" onerror="this.onerror=null;this.src='/blog/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Flymin Gao</div><div class="author-info__description"></div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/blog/archives/"><div class="headline">文章</div><div class="length-num">18</div></a></div><div class="card-info-data-item"><a href="/blog/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div><div class="card-info-data-item"><a href="/blog/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/flymin"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://space.bilibili.com/372712156" target="_blank" title=""><i class="fa-brands fa-bilibili"></i></a><a class="social-icon" href="https://github.com/flymin" target="_blank" title=""><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:flyanywhere9@gmail.com" target="_blank" title=""><i class="far fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">Welcome to Flymin's Blog~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_1"><span class="toc-number">1.</span> <span class="toc-text">如何在 Linux 中清除缓存（Cache）？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toc_2"><span class="toc-number">2.</span> <span class="toc-text">如何清除Linux的交换空间？</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/blog/2023/08/22/PyTorch-%E4%B8%AD%E7%9A%84-Unpooling-%E6%93%8D%E4%BD%9C/" title="PyTorch 中的 Unpooling 操作"><img src="https://upload-pic-1257159689.image.myqcloud.com/uPic/Artboard_20200125184542.jpg!FlyminCOS?imageMogr2/thumbnail/" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="PyTorch 中的 Unpooling 操作"/></a><div class="content"><a class="title" href="/blog/2023/08/22/PyTorch-%E4%B8%AD%E7%9A%84-Unpooling-%E6%93%8D%E4%BD%9C/" title="PyTorch 中的 Unpooling 操作">PyTorch 中的 Unpooling 操作</a><time datetime="2023-08-22T08:55:59.678Z" title="发表于 2023-08-22 16:55:59">2023-08-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog/2020/06/17/%E5%AE%B6%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE%E4%B8%8E%E5%A4%87%E5%BF%98/" title="【记录】家用服务器基本设置与备忘"><img src="https://upload-pic-1257159689.image.myqcloud.com/img/20200617104041.JPG" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="【记录】家用服务器基本设置与备忘"/></a><div class="content"><a class="title" href="/blog/2020/06/17/%E5%AE%B6%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE%E4%B8%8E%E5%A4%87%E5%BF%98/" title="【记录】家用服务器基本设置与备忘">【记录】家用服务器基本设置与备忘</a><time datetime="2020-06-17T02:31:45.000Z" title="发表于 2020-06-17 10:31:45">2020-06-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog/2020/02/05/%E9%A5%A5%E8%8D%92%E8%81%94%E6%9C%BA%E7%89%88%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" title="【DST】饥荒联机版常用指令"><img src="https://upload-pic-1257159689.image.myqcloud.com/uPic/Snipaste_2020-01-31_08-13-59_20200205095947.png!FlyminCOS?imageMogr2/thumbnail/" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="【DST】饥荒联机版常用指令"/></a><div class="content"><a class="title" href="/blog/2020/02/05/%E9%A5%A5%E8%8D%92%E8%81%94%E6%9C%BA%E7%89%88%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" title="【DST】饥荒联机版常用指令">【DST】饥荒联机版常用指令</a><time datetime="2020-02-05T01:57:05.000Z" title="发表于 2020-02-05 09:57:05">2020-02-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog/2020/01/28/ThinkPad-X1-Extreme-%E6%8B%86%E6%9C%BA%E6%8D%A2%E7%A1%85%E8%84%82/" title="ThinkPad X1 Extreme 拆机换硅脂"><img src="https://upload-pic-1257159689.image.myqcloud.com/uPic/IMG_6801_20200128120850.JPG!FlyminCOS?imageMogr2/thumbnail/" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="ThinkPad X1 Extreme 拆机换硅脂"/></a><div class="content"><a class="title" href="/blog/2020/01/28/ThinkPad-X1-Extreme-%E6%8B%86%E6%9C%BA%E6%8D%A2%E7%A1%85%E8%84%82/" title="ThinkPad X1 Extreme 拆机换硅脂">ThinkPad X1 Extreme 拆机换硅脂</a><time datetime="2020-01-28T01:46:00.000Z" title="发表于 2020-01-28 09:46:00">2020-01-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog/2020/01/13/nvidia-smi-%E6%8C%87%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/" title="nvidia-smi 指令的使用"><img src="https://upload-pic-1257159689.image.myqcloud.com/uPic/9HELnS_20200113211926.png!FlyminCOS?imageMogr2/thumbnail/" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="nvidia-smi 指令的使用"/></a><div class="content"><a class="title" href="/blog/2020/01/13/nvidia-smi-%E6%8C%87%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/" title="nvidia-smi 指令的使用">nvidia-smi 指令的使用</a><time datetime="2020-01-13T11:27:12.000Z" title="发表于 2020-01-13 19:27:12">2020-01-13</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Flymin Gao</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/blog/js/utils.js"></script><script src="/blog/js/main.js"></script><script src="/blog/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/blog/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":20,"vOffset":-20},"mobile":{"show":true},"react":{"opacity":1},"log":false});</script></body></html>

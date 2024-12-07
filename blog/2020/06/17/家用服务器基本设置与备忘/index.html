@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【记录】家用服务器基本设置与备忘 | Flymin's Blog</title><meta name="keywords" content="Linux"><meta name="author" content="Flymin Gao"><meta name="copyright" content="Flymin Gao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="家用服务器基本设置与备忘 ThinkPad E455，操作系统为CentOS  英文显示，支持中文（utf8） 安装时使用英文安装，但要选择生成中文语言包 1sudo echo &amp;#x27;LC_ALL&#x3D;&quot;en_US.utf8&quot; &gt; &#x2F;etc&#x2F;locale.conf  笔记本合盖不睡眠&#x2F;挂起   修改文件 1sudo vim &#x2F;etc&#x2F;systemd&#x2F;logind.co">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【记录】家用服务器基本设置与备忘">
+<meta property="og:url" content="https://gaoruiyuan.com/blog/2020/06/17/%E5%AE%B6%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE%E4%B8%8E%E5%A4%87%E5%BF%98/index.html">
+<meta property="og:site_name" content="Flymin&#39;s Blog">
+<meta property="og:description" content="家用服务器基本设置与备忘 ThinkPad E455，操作系统为CentOS  英文显示，支持中文（utf8） 安装时使用英文安装，但要选择生成中文语言包 1sudo echo &amp;#x27;LC_ALL&#x3D;&quot;en_US.utf8&quot; &gt; &#x2F;etc&#x2F;locale.conf  笔记本合盖不睡眠&#x2F;挂起   修改文件 1sudo vim &#x2F;etc&#x2F;systemd&#x2F;logind.co">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://upload-pic-1257159689.image.myqcloud.com/img/20200617104041.JPG">
+<meta property="article:published_time" content="2020-06-17T02:31:45.000Z">
+<meta property="article:modified_time" content="2023-08-22T08:55:59.682Z">
+<meta property="article:author" content="Flymin Gao">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://upload-pic-1257159689.image.myqcloud.com/img/20200617104041.JPG"><link rel="shortcut icon" href="https://upload-pic-1257159689.picbj.myqcloud.com/img/20200109173927.png"><link rel="canonical" href="https://gaoruiyuan.com/blog/2020/06/17/%E5%AE%B6%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE%E4%B8%8E%E5%A4%87%E5%BF%98/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/blog/css/index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/blog/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【记录】家用服务器基本设置与备忘',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-08-22 16:55:59'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://upload-pic-1257159689.picbj.myqcloud.com/img/20200109173908.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/blog/archives/"><div class="headline">文章</div><div class="length-num">18</div></a></div><div class="data-item"><a href="/blog/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div><div class="data-item"><a href="/blog/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/blog/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/blog/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/blog/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/blog/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="https://gaoruiyuan.com/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/blog/link/"><i class="fa-fw fa fa-link"></i><span> 友链&amp;留言</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://upload-pic-1257159689.image.myqcloud.com/img/20200617104041.JPG')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/blog/">Flymin's Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/blog/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/blog/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/blog/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/blog/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="https://gaoruiyuan.com/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/blog/link/"><i class="fa-fw fa fa-link"></i><span> 友链&amp;留言</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【记录】家用服务器基本设置与备忘</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-06-17T02:31:45.000Z" title="发表于 2020-06-17 10:31:45">2020-06-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-08-22T08:55:59.682Z" title="更新于 2023-08-22 16:55:59">2023-08-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/blog/categories/%E6%8A%98%E8%85%BE%E8%AE%B0%E5%BD%95/">折腾记录</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="【记录】家用服务器基本设置与备忘"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="家用服务器基本设置与备忘"><a class="markdownIt-Anchor" href="#家用服务器基本设置与备忘"></a> 家用服务器基本设置与备忘</h2>
+<p>ThinkPad E455，操作系统为CentOS</p>
+<h3 id="英文显示支持中文utf8"><a class="markdownIt-Anchor" href="#英文显示支持中文utf8"></a> 英文显示，支持中文（utf8）</h3>
+<p>安装时使用英文安装，但要选择生成中文语言包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo echo &#x27;LC_ALL=&quot;en_US.utf8&quot; &gt; /etc/locale.conf</span><br></pre></td></tr></table></figure>
+<h3 id="笔记本合盖不睡眠挂起"><a class="markdownIt-Anchor" href="#笔记本合盖不睡眠挂起"></a> 笔记本合盖不睡眠/挂起</h3>
+<ul>
+<li>
+<p>修改文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/systemd/logind.conf</span><br></pre></td></tr></table></figure>
+<p>其中配置项为：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HandleLidSwitch=lock</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>配置生效</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart systemd-logind</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>部分配置项说明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HandlePowerKey 按下电源键后的行为，默认power off</span><br><span class="line">HandleSleepKey 按下挂起键后的行为，默认suspend</span><br><span class="line">HandleHibernateKey 按下休眠键后的行为，默认hibernate</span><br><span class="line">HandleLidSwitch 合上笔记本盖后的行为，默认suspend</span><br></pre></td></tr></table></figure>
+<p>参数说明</p>
+<blockquote>
+<p><code>ignore</code> 忽略，跳过<br />
+<code>power off</code> 关机<br />
+<code>eboot</code> 重启<br />
+<code>halt</code> 挂起<br />
+<code>suspend</code> shell内建指令，可暂停目前正在执行的shell。若要恢复，则必须使用SIGCONT信息。所有的进程都会暂停，但不是消失（halt是进程关闭）<br />
+<code>hibernate</code> 让笔记本进入休眠状态<br />
+<code>hybrid-sleep</code> 混合睡眠，主要是为台式机设计的，是睡眠和休眠的结合体，当你选择Hybird时，系统会像休眠一样把内存里的数据从头到尾复制到硬盘里 ，然后进入睡眠状态，即内存和CPU还是活动的，其他设置不活动，这样你想用电脑时就可以快速恢复到之前的状态了，笔记本一般不用这个功能。<br />
+<code>lock</code> 仅锁屏，计算机继续工作。</p>
+</blockquote>
+<h3 id="配置ddnsdnspod"><a class="markdownIt-Anchor" href="#配置ddnsdnspod"></a> 配置ddns（DNSPod）</h3>
+<ul>
+<li>
+<p>下载 <a target="_blank" rel="noopener" href="https://github.com/imki911/ArDNSPod">ArDNSPod</a> 工具，cr: <a target="_blank" rel="noopener" href="https://github.com/imki911">imki911</a></p>
+</li>
+<li>
+<p>设置token 和域名</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 1. Combine your token ID and token together as follows</span></span><br><span class="line">arToken=&quot;12345,7676f344eaeaea9074c123451234512d&quot;</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 2. Place each domain you want to check as follows</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> you can have multiple arDdnsCheck blocks</span></span><br><span class="line">arDdnsCheck &quot;test.org&quot; &quot;subdomain&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>设置定时任务（如果使用 crontab 要切换文件夹，<code>ddnspod.sh</code> 会自动在当前文件夹寻找 <code>dns.conf</code>，脚本输出在标准错误输出中）</p>
+</li>
+</ul>
+<h3 id="nextcloud-错误"><a class="markdownIt-Anchor" href="#nextcloud-错误"></a> NextCloud 错误</h3>
+<h4 id="internal-server-error"><a class="markdownIt-Anchor" href="#internal-server-error"></a> Internal Server Error</h4>
+<p>服务器在非正常关机重启之后出现了这个问题，详细信息为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Internal Server Error</span><br><span class="line"></span><br><span class="line">The server encountered an internal error and was unable to complete your request.</span><br><span class="line">Please contact the server administrator if this error reappears multiple times, please include the technical details below in your report.</span><br><span class="line">More details can be found in the webserver log.</span><br></pre></td></tr></table></figure>
+<p>通过检查日志发现，应该是Redis没有正常启动或者缓存未更新导致的，因此重启一下Redis服务即可解决。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Flymin Gao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://gaoruiyuan.com/blog/2020/06/17/%E5%AE%B6%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE%E4%B8%8E%E5%A4%87%E5%BF%98/">https://gaoruiyuan.com/blog/2020/06/17/%E5%AE%B6%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE%E4%B8%8E%E5%A4%87%E5%BF%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://gaoruiyuan.com/blog" target="_blank">Flymin's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/blog/tags/Linux/">Linux</a></div><div class="post_share"><div class="social-share" data-image="https://upload-pic-1257159689.image.myqcloud.com/img/20200617104041.JPG" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/blog/2023/08/22/PyTorch-%E4%B8%AD%E7%9A%84-Unpooling-%E6%93%8D%E4%BD%9C/"><img class="prev-cover" src="https://upload-pic-1257159689.image.myqcloud.com/uPic/Artboard_20200125184542.jpg!FlyminCOS?imageMogr2/thumbnail/" onerror="onerror=null;src='/blog/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">PyTorch 中的 Unpooling 操作</div></div></a></div><div class="next-post pull-right"><a href="/blog/2020/02/05/%E9%A5%A5%E8%8D%92%E8%81%94%E6%9C%BA%E7%89%88%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"><img class="next-cover" src="https://upload-pic-1257159689.image.myqcloud.com/uPic/Snipaste_2020-01-31_08-13-59_20200205095947.png!FlyminCOS?imageMogr2/thumbnail/" onerror="onerror=null;src='/blog/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【DST】饥荒联机版常用指令</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/blog/2020/01/13/nvidia-smi-%E6%8C%87%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/" title="nvidia-smi 指令的使用"><img class="cover" src="https://upload-pic-1257159689.image.myqcloud.com/uPic/9HELnS_20200113211926.png!FlyminCOS?imageMogr2/thumbnail/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-01-13</div><div class="title">nvidia-smi 指令的使用</div></div></a></div><div><a href="/blog/2019/06/05/%E5%9C%A8%20Linux%20%E4%B8%8A%E5%A6%82%E4%BD%95%E6%B8%85%E9%99%A4%E5%86%85%E5%AD%98%E7%9A%84%20Cache%E3%80%81Buffer%20%E5%92%8C%E4%BA%A4%E6%8D%A2%E7%A9%BA%E9%97%B4/" title="【转】 在 Linux 上如何清除内存的 Cache、Buffer 和交换空间"><img class="cover" src="https://img.linux.net.cn/data/attachment/album/201506/14/223628fnaf2ja11f0azaf0.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-06-05</div><div class="title">【转】 在 Linux 上如何清除内存的 Cache、Buffer 和交换空间</div></div></a></div><div><a href="/blog/2020/01/08/%E5%A4%8D%E5%88%B6%E5%91%BD%E4%BB%A4cp%E4%B8%8Escp/" title="复制命令cp与scp"><img class="cover" src="https://upload-pic-1257159689.picbj.myqcloud.com/img/20200109174802.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-01-08</div><div class="title">复制命令cp与scp</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://upload-pic-1257159689.picbj.myqcloud.com/img/20200109173908.jpg" onerror="this.onerror=null;this.src='/blog/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Flymin Gao</div><div class="author-info__description"></div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/blog/archives/"><div class="headline">文章</div><div class="length-num">18</div></a></div><div class="card-info-data-item"><a href="/blog/tags/"><div class="headline">标签</div><div class="length-num">30</div></a></div><div class="card-info-data-item"><a href="/blog/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/flymin"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://space.bilibili.com/372712156" target="_blank" title=""><i class="fa-brands fa-bilibili"></i></a><a class="social-icon" href="https://github.com/flymin" target="_blank" title=""><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:flyanywhere9@gmail.com" target="_blank" title=""><i class="far fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">Welcome to Flymin's Blog~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%B6%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE%E4%B8%8E%E5%A4%87%E5%BF%98"><span class="toc-number">1.</span> <span class="toc-text"> 家用服务器基本设置与备忘</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8B%B1%E6%96%87%E6%98%BE%E7%A4%BA%E6%94%AF%E6%8C%81%E4%B8%AD%E6%96%87utf8"><span class="toc-number">1.1.</span> <span class="toc-text"> 英文显示，支持中文（utf8）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%94%E8%AE%B0%E6%9C%AC%E5%90%88%E7%9B%96%E4%B8%8D%E7%9D%A1%E7%9C%A0%E6%8C%82%E8%B5%B7"><span class="toc-number">1.2.</span> <span class="toc-text"> 笔记本合盖不睡眠&#x2F;挂起</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEddnsdnspod"><span class="toc-number">1.3.</span> <span class="toc-text"> 配置ddns（DNSPod）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nextcloud-%E9%94%99%E8%AF%AF"><span class="toc-number">1.4.</span> <span class="toc-text"> NextCloud 错误</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#internal-server-error"><span class="toc-number">1.4.1.</span> <span class="toc-text"> Internal Server Error</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/blog/2023/08/22/PyTorch-%E4%B8%AD%E7%9A%84-Unpooling-%E6%93%8D%E4%BD%9C/" title="PyTorch 中的 Unpooling 操作"><img src="https://upload-pic-1257159689.image.myqcloud.com/uPic/Artboard_20200125184542.jpg!FlyminCOS?imageMogr2/thumbnail/" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="PyTorch 中的 Unpooling 操作"/></a><div class="content"><a class="title" href="/blog/2023/08/22/PyTorch-%E4%B8%AD%E7%9A%84-Unpooling-%E6%93%8D%E4%BD%9C/" title="PyTorch 中的 Unpooling 操作">PyTorch 中的 Unpooling 操作</a><time datetime="2023-08-22T08:55:59.678Z" title="发表于 2023-08-22 16:55:59">2023-08-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog/2020/06/17/%E5%AE%B6%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE%E4%B8%8E%E5%A4%87%E5%BF%98/" title="【记录】家用服务器基本设置与备忘"><img src="https://upload-pic-1257159689.image.myqcloud.com/img/20200617104041.JPG" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="【记录】家用服务器基本设置与备忘"/></a><div class="content"><a class="title" href="/blog/2020/06/17/%E5%AE%B6%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE%E4%B8%8E%E5%A4%87%E5%BF%98/" title="【记录】家用服务器基本设置与备忘">【记录】家用服务器基本设置与备忘</a><time datetime="2020-06-17T02:31:45.000Z" title="发表于 2020-06-17 10:31:45">2020-06-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog/2020/02/05/%E9%A5%A5%E8%8D%92%E8%81%94%E6%9C%BA%E7%89%88%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" title="【DST】饥荒联机版常用指令"><img src="https://upload-pic-1257159689.image.myqcloud.com/uPic/Snipaste_2020-01-31_08-13-59_20200205095947.png!FlyminCOS?imageMogr2/thumbnail/" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="【DST】饥荒联机版常用指令"/></a><div class="content"><a class="title" href="/blog/2020/02/05/%E9%A5%A5%E8%8D%92%E8%81%94%E6%9C%BA%E7%89%88%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" title="【DST】饥荒联机版常用指令">【DST】饥荒联机版常用指令</a><time datetime="2020-02-05T01:57:05.000Z" title="发表于 2020-02-05 09:57:05">2020-02-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog/2020/01/28/ThinkPad-X1-Extreme-%E6%8B%86%E6%9C%BA%E6%8D%A2%E7%A1%85%E8%84%82/" title="ThinkPad X1 Extreme 拆机换硅脂"><img src="https://upload-pic-1257159689.image.myqcloud.com/uPic/IMG_6801_20200128120850.JPG!FlyminCOS?imageMogr2/thumbnail/" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="ThinkPad X1 Extreme 拆机换硅脂"/></a><div class="content"><a class="title" href="/blog/2020/01/28/ThinkPad-X1-Extreme-%E6%8B%86%E6%9C%BA%E6%8D%A2%E7%A1%85%E8%84%82/" title="ThinkPad X1 Extreme 拆机换硅脂">ThinkPad X1 Extreme 拆机换硅脂</a><time datetime="2020-01-28T01:46:00.000Z" title="发表于 2020-01-28 09:46:00">2020-01-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog/2020/01/13/nvidia-smi-%E6%8C%87%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/" title="nvidia-smi 指令的使用"><img src="https://upload-pic-1257159689.image.myqcloud.com/uPic/9HELnS_20200113211926.png!FlyminCOS?imageMogr2/thumbnail/" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="nvidia-smi 指令的使用"/></a><div class="content"><a class="title" href="/blog/2020/01/13/nvidia-smi-%E6%8C%87%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/" title="nvidia-smi 指令的使用">nvidia-smi 指令的使用</a><time datetime="2020-01-13T11:27:12.000Z" title="发表于 2020-01-13 19:27:12">2020-01-13</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Flymin Gao</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/blog/js/utils.js"></script><script src="/blog/js/main.js"></script><script src="/blog/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css"><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/blog/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":20,"vOffset":-20},"mobile":{"show":true},"react":{"opacity":1},"log":false});</script></body></html>

@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/flymin
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://gaoruiyuan.com
+  * I am flymin (https://keybase.io/flymin) on keybase.
+  * I have a public key ASCG-uIeSvPddW9QTSj7jTT9wxjzs4kn4OD2fMLiHEtPBgo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "012074742c23e962cc38a0b5fcaf71fc8a8f13ac0c45ea7c7545765ed0209568d05a0a",
+      "host": "keybase.io",
+      "kid": "012086fae21e4af3dd756f504d28fb8d34fdc318f3b38927e0e0f67cc2e21c4b4f060a",
+      "uid": "2a41b2795d315d74c1776d1fe8784219",
+      "username": "flymin"
+    },
+    "merkle_root": {
+      "ctime": 1711591535,
+      "hash": "9e1ef3e6dda010d80fa79750744b77ca87c34bca477a31eba8051cfdb175e3331af519fb4c94fee96f41775ab84e99e96ee9c3ef9fe3629366e1a137cc67edf1",
+      "hash_meta": "66154ba645d7157db0ef0892a6fc57ee8a4e936fe4bacbeb4227a2af9201bafa",
+      "seqno": 25592559
+    },
+    "service": {
+      "entropy": "rQrwq4WP1gsx9g47o07GT/MU",
+      "hostname": "gaoruiyuan.com",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "6.2.8"
+  },
+  "ctime": 1711591582,
+  "expire_in": 504576000,
+  "prev": "e5fcd2f1ef3c2b069786d7f6b8aa44c8ef6ed00e3bfca3f3eaee0ef1ff521cba",
+  "seqno": 17,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEghvriHkrz3XVvUE0o+400/cMY87OJJ+Dg9nzC4hxLTwYKp3BheWxvYWTESpcCEcQg5fzS8e88KwaXhtf2uKpEyO9u0A47/KPz6u4O8f9SHLrEIHJBwek8AUK6SygZ0XtlcG1MS7X+nW/96klFixGi0i8kAgHCo3NpZ8RAsi5BZO0ftBY3LdPVYl6lBWn0ecY+/cSW6pE2zbLbQLnQTgWuzPtVkS54aT/fW1DG3cZG9bAIZb76NXC4DkgFCqhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIG0gqLte+hxekTvZcUufC0ReH2lUhiQdog3uky1dGQ4Vo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/flymin
+
+==================================================================

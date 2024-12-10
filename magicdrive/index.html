@@ -66,13 +66,6 @@
 </head>
 
 <body>
-  <section class="hero is-link is-small">
-    <div class="hero-body has-text-centered">
-      <p class="title">We are holding W-CODA Workshop @ECCV24!</p>
-      <p class="subtitle">Check it out <a href="https://coda-dataset.github.io/w-coda2024/"
-          style="text-decoration:underline;">here</a>!</p>
-    </div>
-  </section>
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
@@ -128,19 +121,23 @@
               <span class="author-block">
                 <a href="https://gaoruiyuan.com">Ruiyuan Gao</a><sup>1*</sup>,</span>
               <span class="author-block">
-                <a href="https://kaichen1998.github.io">Kai Chen</a><sup>2*</sup>,</span>
+                <a href="https://kaichen1998.github.io" target="_blank">Kai Chen</a><sup>2*</sup>,</span>
               <span class="author-block">
-                <a href="https://xieenze.github.io">Enze Xie</a><sup>3<span>&#8224;</span></sup>,</span>
+                <a href="https://xieenze.github.io" target="_blank">Enze Xie</a><sup>3<span>&#8224;</span></sup>,</span>
               <span class="author-block">
-                <a href="https://scholar.google.com.sg/citations?user=2p7x6OUAAAAJ&hl=en">
+                <a
+                href="https://scholar.google.com.sg/citations?user=2p7x6OUAAAAJ&hl=en"
+                target="_blank">
                   Lanqing Hong</a><sup>3</sup>,</span>
               <span class="author-block">
-                <a href="https://scholar.google.com/citations?user=XboZC1AAAAAJ&hl=en">
+                <a
+                href="https://scholar.google.com/citations?user=XboZC1AAAAAJ&hl=en"
+                target="_blank">
                   Zhenguo Li</a><sup>3</sup>,</span>
               <span class="author-block">
-                <a href="https://sites.google.com/view/dyyeung">Dit-Yan Yeung</a><sup>2</sup>,</span>
+                <a href="https://sites.google.com/view/dyyeung" target="_blank">Dit-Yan Yeung</a><sup>2</sup>,</span>
               <span class="author-block">
-                <a href="https://cure-lab.github.io">Qiang Xu</a><sup>1<span>&#8224;</span></sup></span>
+                <a href="https://cure-lab.github.io" target="_blank">Qiang Xu</a><sup>1<span>&#8224;</span></sup></span>
             </div>
 
             <div class="is-size-5 publication-authors">
@@ -159,7 +156,7 @@
                 <!-- PDF Link. -->
                 <span class="link-block">
                   <a href="https://arxiv.org/pdf/2310.02601.pdf"
-                    class="external-link button is-normal is-rounded is-dark">
+                    class="external-link button is-normal is-rounded is-dark" target="_blank">
                     <span class="icon">
                       <i class="fas fa-file-pdf"></i>
                     </span>
@@ -168,7 +165,8 @@
                 </span>
                 <!-- Arxiv Link. -->
                 <span class="link-block">
-                  <a href="https://arxiv.org/abs/2310.02601" class="external-link button is-normal is-rounded is-dark">
+                  <a href="https://arxiv.org/abs/2310.02601"
+                  class="external-link button is-normal is-rounded is-dark" target="_blank">
                     <span class="icon">
                       <i class="ai ai-arxiv"></i>
                     </span>
@@ -178,7 +176,7 @@
                 <!-- Video Link. -->
                 <span class="link-block">
                   <a href="https://www.bilibili.com/video/BV1EC4y167BR/"
-                    class="external-link button is-normal is-rounded is-dark">
+                    class="external-link button is-normal is-rounded is-dark" target="_blank">
                     <span class="icon">
                         <i class="fa-brands fa-bilibili"></i>
                     </span>
@@ -211,10 +209,27 @@
             <h2 class="title is-3">Update!</h2>
           </span>
           <br><br>
-
           <div class="content has-text-justified">
             <h4 class="subtitle">
-              [2024/06/21] See <span class="dnerf">MagicDrive</span> @ <a href="/hdc2024/">HDC2024</a>.
+              [2024/12/07] We have release all the checkpoints for MagicDrive.
+            </h4>
+            <p class="top_p">
+              Until now, there are <b>three image-generation models</b> (6x224x400,
+              6x272x736, 6x424x800) and <b>two video-generation models</b>
+              (6x224x400-16frame, 6x224x400-61frame) available for downloading. Check our 
+              <a href="https://github.com/cure-lab/MagicDrive">GitHub</a> for more details.
+            </p>
+          </div>
+          <div class="content has-text-justified">
+            <h4 class="subtitle">
+              [2024/07/15] We held W-CODA Workshop @ECCV24 with MagicDrive as the baseline
+              method. Check it out <a href="https://coda-dataset.github.io/w-coda2024/"
+              target="_blank">here</a>!
+            </h4>
+          </div>
+          <div class="content has-text-justified">
+            <h4 class="subtitle">
+              [2024/06/21] See <span class="dnerf">MagicDrive</span> @ <a href="/news/hdc2024/">HDC2024</a>.
             </h4>
           </div>
           <div class="content has-text-justified">
@@ -286,8 +301,7 @@
             street-view images with diverse contorls.
           </p>
           <p>
-            It works with both UNet and <span style="background-color:
-            yellow;">DiT</span> architectures.
+            It works with both UNet and <a href="/magicdrivedit/">DiT</a> architectures.
           </p>
         </h2>
       </div>
@@ -574,7 +588,7 @@
           <div class="content has-text-justified">
             <p>
               By finetuning <span class="dnerf">MagicDrive</span> with
-              <a rel="Tune-a-Video" href="https://tuneavideo.github.io/">Tune-a-Video</a>
+              <a rel="Tune-a-Video" href="https://tuneavideo.github.io/" target="_blank">Tune-a-Video</a>
               on nuScenes training set,
               <span class="dnerf">MagicDrive</span> can generates
               termporal-consistent frames, while keeping diversity. We
@@ -651,9 +665,10 @@
             </p>
             <p>
               This website use the template from
-              <a href="https://nerfies.github.io/">Nerfies</a>, licensed under
+              <a href="https://nerfies.github.io/" target="_blank">Nerfies</a>, licensed under
               a
-              <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+              <a rel="license"
+              href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
                 Creative Commons Attribution-ShareAlike 4.0 International
                 License</a>.
             </p>

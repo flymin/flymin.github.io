@@ -216,6 +216,71 @@ for Autonomous Driving with Adaptive Control">
     </div>
   </section>
 
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-3"><mark>Updates: Fine-tuned
+          results on Waymo Open Dataset.</mark></h2>
+
+        <p class="content is-size-5">To show diversity and controllability. We
+          generate the following videos with the same boxes & road maps & ego
+          trajectory from the validation split of the Waymo Open Dataset.
+          We use different text prompts to change the
+          weather/time-of-day/background of each video. All videos are with
+          3&times;848&times;1600, 193 frames at 10 FPS from single inference.
+          Only 3 same-sized views are available in Waymo for training.</p>
+
+        <p class="content is-size-4">🌧️Rainy:</p>
+        <div class="columns is-centered">
+          <video playsinline controls muted loop autoplay width="80%">
+            <source src="./static/video/waymo/sample_0090_848x4800_f193_fps10_full_sp8_slice_rain.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <p class="content is-size-4">🌫️Foggy:</p>
+        <div class="columns is-centered">
+          <video playsinline controls muted loop autoplay width="80%">
+            <source src="./static/video/waymo/sample_0090_848x4800_f193_fps10_full_sp8_slice_foggy.mp4"
+              type="video/mp4">
+          </video>
+        </div>
+
+        <p class="content is-size-4">🌙At Night:</p>
+        <div class="columns is-centered">
+          <video playsinline controls muted loop autoplay width="80%">
+            <source src="./static/video/waymo/sample_0090_848x4800_f193_fps10_full_sp8_slice_night.mp4"
+              type="video/mp4">
+          </video>
+        </div>
+
+        <p class="content is-size-4">🌄Twilight:</p>
+        <div class="columns is-centered">
+          <video playsinline controls muted loop autoplay width="80%">
+            <source src="./static/video/waymo/sample_0090_848x4800_f193_fps10_full_sp8_slice_dusk.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <p class="content is-size-4">☀️Sunny:</p>
+        <div class="columns is-centered">
+          <video playsinline controls muted loop autoplay width="80%">
+            <source src="./static/video/waymo/sample_0090_848x4800_f193_fps10_full_sp8_slice_sunny.mp4"
+              type="video/mp4">
+          </video>
+        </div>
+
+        <p class="content is-size-4">🏞Hill area, more trees🌳, less buildings:</p>
+        <div class="columns is-centered">
+          <video playsinline controls muted loop autoplay width="80%">
+            <source src="./static/video/waymo/sample_0090_848x4800_f193_fps10_full_sp8_slice_hill2.mp4"
+              type="video/mp4">
+          </video>
+        </div>
+
+        <br>
+      </div>
+    </div>
+  </section>
+
   <section class="hero is-small">
     <div class="hero-body">
       <div class="container">
@@ -223,7 +288,7 @@ for Autonomous Driving with Adaptive Control">
           <div class="column has-text-centered">
             <span class="hero is-warning" style="max-width:fit-content;margin:auto">
               <h2 class="title is-4">
-                All generated videos on this page are
+                All generated videos on the following page are
                 <span style="color: brown;">6&times;848&times;1600</span> with
                 <span style="color: brown;">20s</span> at
                 <span style="color: brown;">12 FPS</span> from <span style="color:
